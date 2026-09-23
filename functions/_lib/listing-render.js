@@ -8,12 +8,15 @@ export function virtualTourSection(x){
  const embed=['www.insidemaps.com','insidemaps.com','my.matterport.com'].includes(host);
  const frameUrl=new URL(url);
  if(['www.insidemaps.com','insidemaps.com'].includes(host)){
+  let projectId=frameUrl.searchParams.get('projectId');
   if(frameUrl.pathname==='/app/walkthrough-tour/'&&frameUrl.searchParams.has('p')){
-   frameUrl.pathname='/app/walkthrough-v2/';frameUrl.searchParams.set('projectId',frameUrl.searchParams.get('p'));frameUrl.searchParams.delete('p');
+   projectId=frameUrl.searchParams.get('p');
   }
+  // InsideMaps reads the project identifier from its query string.
+  if(projectId){frameUrl.pathname='/app/walkthrough-v2/';frameUrl.searchParams.set('projectId',projectId);frameUrl.searchParams.delete('p')}
   frameUrl.searchParams.set('embedded','true');frameUrl.searchParams.set('openInNewTab','false');
  }
- return `<section class="detail-section virtual-tour-section" id="virtual-tour"><span class="eyebrow">STEP INSIDE</span><h2>Explore the virtual tour</h2><p>Select Play to explore the home here. Drag to look around, use the tour controls to move through rooms, or expand to full screen.</p>${embed?`<iframe class="virtual-tour-frame" src="${e(frameUrl.href)}" title="Virtual tour of ${e(title(x))}" loading="eager" allow="fullscreen; xr-spatial-tracking; gyroscope; accelerometer" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`:''}<a class="textlink" href="${e(url)}" target="_blank" rel="noopener">Open virtual tour in a new tab ↗</a></section>`;
+ return `<section class="detail-section virtual-tour-section" id="virtual-tour"><span class="eyebrow">STEP INSIDE</span><h2>Explore the virtual tour</h2><p>Select Play to explore the home here. Drag to look around, use the tour controls to move through rooms, or expand to full screen.</p>${embed?`<div class="virtual-tour-shell"><div class="virtual-tour-loader" role="status"><span class="virtual-tour-spinner"><img src="/assets/logo.svg" width="42" height="42" alt="Blue Crown"></span><strong>Loading virtual tour…</strong><span>Please wait while the tour opens.</span></div><iframe class="virtual-tour-frame" onload="this.previousElementSibling?.remove()" src="${e(frameUrl.href)}" title="Virtual tour of ${e(title(x))}" loading="eager" allow="fullscreen; xr-spatial-tracking; gyroscope; accelerometer" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div>`:''}<p class="virtual-tour-fallback">If the viewer does not start, <a class="textlink" href="${e(frameUrl.href)}" target="_blank" rel="noopener">open the virtual tour in a new tab ↗</a></p></section>`;
 }
 export function renderListing(template,x,{snapshot=false}={}){
  const name=title(x), images=photos(x), city=x.address?.city||'North Texas', address=x.address?.formattedAddress||x.address?.address||name, point=coords(x);

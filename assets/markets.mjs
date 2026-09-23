@@ -1,5 +1,16 @@
 import {compareScenarios} from './calculator-math.mjs';
-const mapNode=document.querySelector('#service-area-map');if(mapNode&&window.L){const m=L.map(mapNode,{scrollWheelZoom:false}).setView([32.95,-96.92],9);const tile=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'});const loading=document.createElement('div');loading.className='crown-loader map-loading';loading.innerHTML='<img src="/assets/logo.svg" alt=""><span>Exploring North Texas…</span>';mapNode.append(loading);const end=()=>loading.remove();tile.once('load',end).once('tileerror',()=>{end();mapNode.insertAdjacentHTML('afterend','<p class="source-note">Map tiles are unavailable. All six city guides are linked alongside the map.</p>')}).addTo(m);setTimeout(end,12000);const points=[];document.querySelectorAll('[data-city-marker]').forEach(a=>{const p=[Number(a.dataset.lat),Number(a.dataset.lng)];points.push(p);L.marker(p,{title:a.dataset.city,icon:L.divIcon({className:'city-pin',html:a.dataset.city,iconSize:[94,32],iconAnchor:[47,16]})}).bindPopup(`<a href="${a.getAttribute('href')}">Explore ${a.dataset.city} →</a>`).addTo(m)});m.fitBounds(points,{padding:[65,45]});}
+import {loadGoogleMaps,pillIcon} from './google-maps.mjs?v=1';
+const mapNode=document.querySelector('#service-area-map');
+async function initServiceAreaMap(){
+ if(!mapNode)return;
+ const loading=document.createElement('div');loading.className='crown-loader map-loading';loading.innerHTML='<img src="/assets/logo.svg" alt=""><span>Exploring North Texas…</span>';mapNode.append(loading);
+ try{
+  const maps=await loadGoogleMaps(),m=new maps.Map(mapNode,{center:{lat:32.95,lng:-96.92},zoom:9,scrollwheel:false,mapTypeControl:false,streetViewControl:false,fullscreenControl:false}),bounds=new maps.LatLngBounds(),info=new maps.InfoWindow();
+  document.querySelectorAll('[data-city-marker]').forEach(a=>{const position={lat:Number(a.dataset.lat),lng:Number(a.dataset.lng)},marker=new maps.Marker({map:m,position,title:a.dataset.city,label:{text:a.dataset.city,color:'#fff',fontSize:'11px',fontWeight:'700'},icon:pillIcon(maps,'#142653',110,36)});bounds.extend(position);marker.addListener('click',()=>{info.setContent(`<a href="${a.getAttribute('href')}">Explore ${a.dataset.city} →</a>`);info.open({map:m,anchor:marker})})});
+  m.fitBounds(bounds,55);maps.event.addListenerOnce(m,'idle',()=>loading.remove());setTimeout(()=>loading.remove(),12000);
+ }catch{loading.remove();mapNode.insertAdjacentHTML('afterend','<p class="source-note">The map is unavailable. All six city guides are linked alongside it.</p>')}
+}
+initServiceAreaMap();
 const calculator=document.querySelector('#rent-sell'),output=document.querySelector('#calculator-results');let summary='';
 if(calculator){const lead=document.querySelector('.lead-form');lead?.querySelector('textarea').setAttribute('maxlength','1300');const label=document.createElement('label');label.className='calculator-share';label.innerHTML='<input type="checkbox" name="includeCalculation"> Include my current calculator assumptions and results with this inquiry';lead?.querySelector('.notice').before(label);const money=x=>x.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
  const calculate=()=>{if(!calculator.reportValidity()){summary='';return}try{const a=Object.fromEntries([...new FormData(calculator)].map(([k,v])=>[k,v===''?NaN:Number(v)])),r=compareScenarios(a);output.innerHTML=`<span class="eyebrow">YOUR ${a.years}-YEAR SCENARIO</span><h2>Two paths to compare.</h2><div class="calc-values"><div><span>Rent, then sell · net proceeds plus cash flow</span><strong>${money(r.rentOutcome)}</strong></div><div><span>Sell now · proceeds with assumed investment growth</span><strong>${money(r.sellOutcome)}</strong></div><div><span>First-year rental cash flow</span><strong>${money(r.firstYear)}</strong></div></div><p>Net proceeds if sold today: ${money(r.proceeds)}. Loan balance after ${a.years} years: ${money(r.balance)}.</p>`;summary='Calculator assumptions: '+Object.entries(a).map(([k,v])=>`${k}=${v}`).join(', ')+`. Results: rental path ${money(r.rentOutcome)}; sell path ${money(r.sellOutcome)}; first-year cash flow ${money(r.firstYear)}. Educational estimate.`;}catch(e){summary='';output.textContent=e.message}};
@@ -13,7 +24,6 @@ if(statisticNodes.length&&!motionPreference.matches&&'IntersectionObserver' in w
 
 // Decorative regional map behind the Service Areas introduction.
 const heroMapNode=document.querySelector('#service-hero-map');
-if(heroMapNode&&window.L){
- const heroMap=L.map(heroMapNode,{zoomControl:false,attributionControl:false,dragging:false,scrollWheelZoom:false,doubleClickZoom:false,boxZoom:false,keyboard:false,touchZoom:false,zoomAnimation:false,fadeAnimation:false}).setView([32.93,-97.35],9);
- L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(heroMap);
+if(heroMapNode){
+ loadGoogleMaps().then(maps=>new maps.Map(heroMapNode,{center:{lat:32.93,lng:-97.35},zoom:9,disableDefaultUI:true,gestureHandling:'none',keyboardShortcuts:false})).catch(()=>heroMapNode.remove());
 }
