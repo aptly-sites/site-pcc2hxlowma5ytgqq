@@ -1,0 +1,12 @@
+# Blue Crown Property Management
+
+Property management in Dallas, Fort Worth, Plano, Allen, McKinney, and Frisco.
+Phone: 214.432.4115
+Email: info@bluecrownproperties.com
+
+## Pages
+- /owners/
+- /properties/
+- /residents/
+- /service-areas/
+- /contact/

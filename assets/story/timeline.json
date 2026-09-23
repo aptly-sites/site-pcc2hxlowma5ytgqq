@@ -1,0 +1,62 @@
+{
+  "status": "implemented",
+  "enabled": true,
+  "story": "One North Texas home, a quiet approach toward the front door.",
+  "beats": [
+    {
+      "id": "introduction",
+      "desktopVh": 40,
+      "mobileVh": 25,
+      "frameRange": [
+        0,
+        16
+      ],
+      "copyRange": [
+        0,
+        1
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "hold": false
+    },
+    {
+      "id": "approach",
+      "desktopVh": 180,
+      "mobileVh": 110,
+      "frameRange": [
+        16,
+        96
+      ],
+      "copyRange": [
+        0,
+        1
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "hold": false
+    },
+    {
+      "id": "arrival",
+      "desktopVh": 40,
+      "mobileVh": 25,
+      "frameRange": [
+        96,
+        96
+      ],
+      "copyRange": [
+        0,
+        1
+      ],
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "hold": true
+    }
+  ],
+  "fallback": "Poster and normal flow for reduced motion, save-data, short viewports, direct content anchors or complete frame failure."
+}

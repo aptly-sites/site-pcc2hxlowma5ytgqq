@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="660" viewBox="348 282 560 660" role="img" aria-labelledby="title desc">
+  <title id="title">Blue Crown Properties B monogram</title>
+  <desc id="desc">A rounded navy B with a crown and curved band cut out in negative space.</desc>
+  <path fill="#142653" fill-rule="evenodd" d="
+    M 439,299
+    H 672
+    C 774,299 840,365 840,461
+    C 840,516 823,555 793,586
+    C 789,590 790,594 796,597
+    C 858,626 890,680 890,751
+    C 890,854 815,925 681,925
+    H 439
+    C 393,925 366,899 366,853
+    V 370
+    C 366,327 395,299 439,299
+    Z
+
+    M 490,419
+    L 535,490
+    L 604,376
+    L 667,490
+    L 710,419
+    V 560
+    C 710,569 658,587 604,587
+    C 550,587 490,574 490,560
+    Z
+
+    M 465,703
+    C 546,760 674,760 756,703
+    L 790,763
+    C 738,815 677,844 608,844
+    C 539,844 477,817 430,763
+    Z
+  "/>
+</svg>

@@ -1,0 +1,48 @@
+.company-hero{background:var(--navy);color:#fff}
+.company-hero-photo{background:#dce2e8}
+.company-hero-photo img{display:block;width:100%;height:auto}
+.company-hero-copy{padding:56px 0 66px}
+.company-hero-copy .eyebrow{color:#c4d3f5}
+.company-hero-copy h1{max-width:900px;margin-bottom:20px}
+.company-hero-copy p{max-width:740px;color:#e3e9f4;font-size:18px;margin-bottom:0}
+@media(max-width:600px){.company-hero-copy{padding:42px 0 48px}.company-hero-copy h1{font-size:clamp(38px,10vw,50px)}.company-hero-copy p{font-size:16px}}
+.company-team{background:#fff}
+.company-team .section-head{margin-bottom:38px}
+.company-team .section-head p{max-width:510px}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:46px 26px}
+.team-profile{min-width:0;margin:0;outline:none}
+.team-profile:focus-visible{outline:3px solid var(--blue);outline-offset:7px}
+.team-portrait{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:1/1;background:#f6f8fc}
+.team-shape{position:absolute;display:block;pointer-events:none;transition:transform .7s cubic-bezier(.2,.75,.2,1),border-radius .7s ease,opacity .55s ease}
+.team-shape-main{z-index:-2;inset:12% 5% 0 8%;background:#d8e4f4;border-radius:50% 50% 6% 6%;transform:rotate(-9deg)}
+.team-shape-accent{z-index:-1;right:-11%;top:-12%;width:50%;aspect-ratio:1;border:18px solid #c1a15f;border-radius:50%;opacity:.9;transform:rotate(10deg)}
+.team-portrait img{position:absolute;z-index:1;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:var(--portrait-position,center);transition:transform .7s cubic-bezier(.2,.75,.2,1);will-change:transform}
+.team-profile:is(:hover,:focus-visible) .team-shape-main{transform:translate(-5%,2%) rotate(11deg) scale(1.15);border-radius:28% 62% 14% 38%}
+.team-profile:is(:hover,:focus-visible) .team-shape-accent{transform:translate(-30%,20%) rotate(-30deg) scale(1.18)}
+.team-profile:is(:hover,:focus-visible) img{transform:translateY(-7px) scale(1.035)}
+.team-profile figcaption{padding:20px 2px 0}
+.team-profile h3{font-size:22px;line-height:1.25;margin:0;color:var(--navy);transition:color .25s ease}
+.team-profile:is(:hover,:focus-visible) h3{color:var(--blue)}
+.team-profile figcaption .team-role{font-size:15px;line-height:1.4;font-weight:600;color:#405071;margin:9px 0 0}
+.team-profile figcaption .team-license{font-size:13px;line-height:1.45;color:#617087;margin:5px 0 0}
+.team-profile:nth-child(2) .team-shape-main{inset:15% 5% -13% 10%;background:#e9d7b3;border-radius:7%;transform:rotate(18deg)}
+.team-profile:nth-child(2) .team-shape-accent{right:auto;left:-12%;top:2%;width:42%;border:0;border-radius:12%;background:#8ea9d5;clip-path:polygon(50% 0,100% 100%,0 100%)}
+.team-profile:nth-child(3) .team-shape-main{inset:13% 6% -3% 7%;background:#d3dce9;border-radius:12% 72% 8% 12%;transform:rotate(-6deg)}
+.team-profile:nth-child(3) .team-shape-accent{top:0;right:4%;width:38%;border-color:#a8bde0;border-width:15px}
+.team-profile:nth-child(4) .team-shape-main{inset:12% 8% 0 8%;background:#c6d5ef;border-radius:40% 6% 38% 6%;transform:rotate(8deg)}
+.team-profile:nth-child(4) .team-shape-accent{top:1%;right:-6%;width:44%;background:#d8bd82;border:0;border-radius:4%;clip-path:polygon(50% 0,61% 33%,100% 18%,75% 51%,100% 80%,61% 68%,50% 100%,39% 68%,0 80%,25% 51%,0 18%,39% 33%)}
+.team-profile:nth-child(5) .team-shape-main{inset:13% 7% -7% 10%;background:#e5d9bf;border-radius:50% 8% 50% 8%;transform:rotate(-12deg)}
+.team-profile:nth-child(5) .team-shape-accent{top:-5%;right:-1%;border-color:#b9ccec}
+.team-profile:nth-child(6) .team-shape-main{inset:16% 3% -10% 11%;background:#d4e3e7;border-radius:44% 44% 5% 5%;transform:rotate(6deg)}
+.team-profile:nth-child(6) .team-shape-accent{top:9%;right:-14%;border:0;border-radius:50% 50% 8% 8%;background:#c5a56a}
+.team-profile:nth-child(7) .team-shape-main{inset:18% 6% -6% 6%;background:#c9d8ee;border-radius:5%;clip-path:polygon(50% 0,100% 100%,0 100%);transform:rotate(-7deg)}
+.team-profile:nth-child(7) .team-shape-accent{top:0;right:3%;border-color:#d9c392}
+.team-profile:nth-child(8) .team-shape-main{inset:14% 5% -8% 9%;background:#d9e3f2;border-radius:50% 50% 0 0;transform:rotate(11deg)}
+.team-profile:nth-child(8) .team-shape-accent{top:-3%;right:-8%;border:0;border-radius:50%;background:#e2c992}
+.team-profile:nth-child(9) .team-shape-main{inset:11% 7% -5% 9%;background:#e7d8b8;border-radius:7% 52% 7% 52%;transform:rotate(-8deg)}
+.team-profile:nth-child(9) .team-shape-accent{top:5%;right:-13%;width:54%;border-color:#aebfdf;border-radius:15%}
+.company-closing .split{align-items:start}
+.company-closing .company-testimonials{background:#f2f5fa}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 22px}}
+@media(max-width:600px){.company-team .section-head{margin-bottom:26px}.team-grid{grid-template-columns:1fr;gap:30px}.team-portrait{aspect-ratio:1.08/1}.team-profile h3{font-size:20px}.team-profile figcaption{padding-top:13px}.team-profile figcaption .team-role{font-size:14px}.team-profile figcaption .team-license{font-size:12px}.team-shape-accent{border-width:10px}}
+@media(prefers-reduced-motion:reduce){.team-shape,.team-portrait img,.team-profile h3{transition:none}.team-profile:is(:hover,:focus-visible) img{transform:none}}

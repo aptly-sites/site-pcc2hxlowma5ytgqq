@@ -1,0 +1,37 @@
+{
+  "provider": "Higgsfield",
+  "sequenceStatus": "scroll-video",
+  "variants": {
+    "desktop": {
+      "frameCount": 97,
+      "width": 1440,
+      "height": 810,
+      "poster": "/assets/story/desktop-poster.webp",
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "fps": 24,
+      "posterBytes": 286532,
+      "video": "/assets/story/desktop-scrub.mp4",
+      "videoBytes": 4464298
+    },
+    "mobile": {
+      "frameCount": 97,
+      "width": 648,
+      "height": 1152,
+      "poster": "/assets/story/mobile-poster.webp",
+      "focalPoint": [
+        0.5,
+        0.5
+      ],
+      "fps": 24,
+      "posterBytes": 187698,
+      "video": "/assets/story/mobile-scrub.mp4",
+      "videoBytes": 2738499
+    }
+  },
+  "originals": "media-originals/higgsfield/",
+  "source": "AI-generated illustrative home, never a real rental listing",
+  "playback": "Selected video downloaded once; local coalesced seeks; hardware video decoding"
+}
