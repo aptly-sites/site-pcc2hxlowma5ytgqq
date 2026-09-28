@@ -111,6 +111,13 @@
 .terms-contact{line-height:1.9}
 @media(max-width:650px){.terms-toc{padding:23px}.terms-toc ol{columns:1}}
 
+.footer-lead-safe img{background:transparent}
+.certification-hero{position:relative;isolation:isolate;min-height:510px;display:flex;align-items:center;overflow:hidden;background:#e8e5df}
+.certification-hero-photo{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 65%}
+.certification-hero::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(247,247,245,.96),rgba(247,247,245,.85) 37%,rgba(247,247,245,.12) 70%,transparent)}
+.certification-hero h1{max-width:620px}.certification-hero p{max-width:480px;color:var(--ink)}
+@media(max-width:600px){.certification-hero{min-height:570px;align-items:flex-start;padding-top:45px}.certification-hero-photo{object-position:65% bottom}.certification-hero::before{background:linear-gradient(180deg,rgba(247,247,245,.97),rgba(247,247,245,.88) 42%,rgba(247,247,245,.08) 72%)}.certification-hero h1{font-size:39px}.certification-hero p{max-width:350px}}
+
 /* Keep long feed descriptions and calculator fields inside narrow phones. */
 .rental-detail .description{overflow-wrap:anywhere}
 @media(max-width:850px){.calculator-layout{grid-template-columns:minmax(0,1fr)}.calculator-layout>*{min-width:0}}
