@@ -1,4 +1,4 @@
-import {getRentalFeed,rentalCities} from './rental-feed.mjs';
+import {getRentalFeed,rentalCities} from './rental-feed.mjs?v=2';
 const header=document.querySelector('.global-header'),triggers=[...document.querySelectorAll('.nav-trigger')];
 function closeMenus(focus=false){for(const button of triggers){if(button.getAttribute('aria-expanded')==='true'&&focus)button.focus();button.setAttribute('aria-expanded','false');document.getElementById(button.getAttribute('aria-controls')).hidden=true}}
 let citiesReady=false;

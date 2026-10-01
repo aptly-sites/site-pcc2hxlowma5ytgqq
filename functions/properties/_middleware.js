@@ -12,8 +12,8 @@
 // a real page instead of a 404 (the static /properties/ search page already lists it — it
 // fetches the same live feed client-side — so the two no longer disagree).
 import { renderListing } from '../_lib/listing-render.js';
+import { findPublishedRental } from '../../assets/rental-feed.mjs';
 
-const FEED_URL = 'https://app.getaptly.com/api/portal/listings/PCc2hXLoWma5yTgQQ';
 const PROPERTY_PATH = /^\/properties\/[^/]+\/[^/]+\/?$/;
 // How long to wait for the live feed before falling back to the static snapshot (or a
 // "checking availability" shell if there isn't one) and streaming the live version in once it
@@ -56,11 +56,7 @@ export async function onRequest({ request, next, env }) {
 
   const work = (async () => {
     try {
-      const response = await fetch(FEED_URL, { signal: AbortSignal.timeout(10000) });
-      if (!response.ok) throw Error('feed');
-      const feed = await response.json();
-      if (!Array.isArray(feed.data)) throw Error('format');
-      const listing = feed.data.find(x => x._id === id && x.publishedForRent !== false);
+      const listing = await findPublishedRental(id);
       return listing ? renderListing(template, listing) : null;
     } catch {
       return snapshot || template.replace(/<main[\s\S]*?<\/main>/, NOT_FOUND_MAIN);

@@ -1,5 +1,5 @@
 import {comparisonCard} from './comparison.mjs?v=1';
-import {getRentalFeed} from './rental-feed.mjs';
+import {getRentalFeed} from './rental-feed.mjs?v=2';
 import {rentBudget,withinBudget} from './affordability-math.mjs';
 import {esc,title,path,photos,money,amount,tour,apply,coords,filterHomes,availability,widget} from './rental-data.mjs?v=2';
 import {loadGoogleMaps,pillIcon} from './google-maps.mjs?v=1';

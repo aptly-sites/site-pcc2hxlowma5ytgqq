@@ -1,12 +1,9 @@
 // Ported from the source repo's worker.mjs/schools-api.mjs (Cloudflare Worker route
-// `/api/nearby-schools`) to a Cloudflare Pages Function — logic unchanged except the
-// entry point (onRequestGet({ request, env }) instead of a Worker's fetch(request, env))
-// and the relative import path, adjusted for this file's location under functions/api/
-// rather than the repo root. See docs/website-hosting-custom-sites.md ("Server logic
-// beyond a simple contact form").
+// `/api/nearby-schools`) to a Cloudflare Pages Function. It uses the shared paginated
+// rental feed so schools are available for homes beyond the first feed page.
 import { coords } from '../../assets/rental-data.mjs';
+import { fetchRentalPages } from '../../assets/rental-feed.mjs';
 
-const feedURL = 'https://app.getaptly.com/api/portal/listings/PCc2hXLoWma5yTgQQ';
 const reply = (data, status = 200) =>
   Response.json(data, { status, headers: { 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' } });
 
@@ -55,11 +52,7 @@ export function createSchoolsHandler(fetcher = (...a) => fetch(...a)) {
     if (feed && Date.now() < feedUntil) return feed;
     if (!feedPending)
       feedPending = (async () => {
-        const r = await fetcher(feedURL, { signal: AbortSignal.timeout(10000) });
-        if (!r.ok) throw Error('feed');
-        const b = await r.json();
-        if (!Array.isArray(b.data)) throw Error('feed');
-        feed = b.data;
+        feed = (await fetchRentalPages(fetcher,10000)).data;
         feedUntil = Date.now() + 300000;
         return feed;
       })().finally(() => {
