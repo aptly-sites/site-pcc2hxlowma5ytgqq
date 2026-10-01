@@ -4,6 +4,10 @@
 // Worker's fetch(request, env), per docs/website-hosting-custom-sites.md
 // ("Server logic beyond a simple contact form").
 const BASE = 'https://core-api.getaptly.com';
+// All website owner inquiries are routed to Blue Crown's Owner Leads board.
+// Board UIDs are configuration identifiers, not credentials; the Aptly API
+// token remains available only through the server-side environment.
+const OWNER_LEADS_BOARD_ID = 'RgLoE5h4obR9aaZ5b';
 const json = (body, status = 200) =>
   new Response(JSON.stringify(body), {
     status,
@@ -145,7 +149,7 @@ export async function handleLead(request, env, fetcher = fetch) {
       { message: 'The online form is not connected yet. Please call 214.432.4115 or email info@bluecrownproperties.com.' },
       503
     );
-  if (!env.APTLY_API_TOKEN || !env.APTLY_OWNER_LEADS_BOARD_ID)
+  if (!env.APTLY_API_TOKEN)
     return json({ message: 'Please call 214.432.4115 to request your analysis.' }, 503);
   const call = async (path, body) => {
     const r = await fetcher(BASE + path, {
@@ -158,7 +162,7 @@ export async function handleLead(request, env, fetcher = fetch) {
     return r.json();
   };
   try {
-    const board = encodeURIComponent(env.APTLY_OWNER_LEADS_BOARD_ID);
+    const board = encodeURIComponent(OWNER_LEADS_BOARD_ID);
     const [schema, config] = await Promise.all([
       call('/api/schema/' + board),
       call('/api/board/' + board + '/configuration')
