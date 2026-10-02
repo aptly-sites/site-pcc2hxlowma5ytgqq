@@ -1,6 +1,6 @@
-import {rentReduction,reductionChart} from './rent-reduction.mjs?v=2';
+import {rentReduction,reductionChart} from './rent-reduction.mjs?v=3';
 import {estimate} from './owner-calculator-math.mjs';
-import {managementChart,evictionChart,rentSellChart} from './owner-calculator-charts.mjs?v=1';
+import {managementChart,evictionChart,rentSellChart} from './owner-calculator-charts.mjs?v=2';
 import {esc} from './rental-data.mjs?v=2';
 const root=document.querySelector('[data-calculator]'),calculator=root.querySelector('form'),out=root.querySelector('.scenario-results'),lead=document.querySelector('.lead-form');
 const money=v=>v.toLocaleString('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});

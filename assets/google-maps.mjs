@@ -1,3 +1,4 @@
+import {themeColor} from './theme.mjs?v=1';
 let mapsPromise;
 
 export function loadGoogleMaps(){
@@ -19,7 +20,7 @@ export function loadGoogleMaps(){
  return mapsPromise;
 }
 
-export function pillIcon(maps,color='#142653',width=82,height=34){
- const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><rect x="1.5" y="1.5" width="${width-3}" height="${height-3}" rx="${height/2}" fill="${color}" stroke="white" stroke-width="3"/><path d="M${width/2-7} ${height-2}h14L${width/2} ${height+5}z" fill="${color}"/></svg>`;
+export function pillIcon(maps,color=themeColor('navy'),width=82,height=34){
+ const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}"><rect x="1.5" y="1.5" width="${width-3}" height="${height-3}" rx="${height/2}" fill="${color}" stroke="${themeColor('white')}" stroke-width="3"/><path d="M${width/2-7} ${height-2}h14L${width/2} ${height+5}z" fill="${color}"/></svg>`;
  return {url:`data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`,scaledSize:new maps.Size(width,height),anchor:new maps.Point(width/2,height/2)};
 }

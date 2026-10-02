@@ -1,12 +1,14 @@
 import {compareScenarios} from './calculator-math.mjs';
-import {loadGoogleMaps,pillIcon} from './google-maps.mjs?v=1';
+import {loadGoogleMaps,pillIcon} from './google-maps.mjs?v=2';
+import {themeColor} from './theme.mjs?v=1';
 const mapNode=document.querySelector('#service-area-map');
 async function initServiceAreaMap(){
  if(!mapNode)return;
  const loading=document.createElement('div');loading.className='crown-loader map-loading';loading.innerHTML='<img src="/assets/logo.svg" alt=""><span>Exploring North Texas…</span>';mapNode.append(loading);
  try{
   const maps=await loadGoogleMaps(),m=new maps.Map(mapNode,{center:{lat:32.95,lng:-96.92},zoom:9,scrollwheel:false,mapTypeControl:false,streetViewControl:false,fullscreenControl:false}),bounds=new maps.LatLngBounds(),info=new maps.InfoWindow();
-  document.querySelectorAll('[data-city-marker]').forEach(a=>{const position={lat:Number(a.dataset.lat),lng:Number(a.dataset.lng)},marker=new maps.Marker({map:m,position,title:a.dataset.city,label:{text:a.dataset.city,color:'#fff',fontSize:'11px',fontWeight:'700'},icon:pillIcon(maps,'#142653',110,36)});bounds.extend(position);marker.addListener('click',()=>{info.setContent(`<a href="${a.getAttribute('href')}">Explore ${a.dataset.city} →</a>`);info.open({map:m,anchor:marker})})});
+  const markerWhite=themeColor('white'),markerNavy=themeColor('navy');
+  document.querySelectorAll('[data-city-marker]').forEach(a=>{const position={lat:Number(a.dataset.lat),lng:Number(a.dataset.lng)},marker=new maps.Marker({map:m,position,title:a.dataset.city,label:{text:a.dataset.city,color:markerWhite,fontSize:'11px',fontWeight:'700'},icon:pillIcon(maps,markerNavy,110,36)});bounds.extend(position);marker.addListener('click',()=>{info.setContent(`<a href="${a.getAttribute('href')}">Explore ${a.dataset.city} →</a>`);info.open({map:m,anchor:marker})})});
   m.fitBounds(bounds,55);maps.event.addListenerOnce(m,'idle',()=>loading.remove());setTimeout(()=>loading.remove(),12000);
  }catch{loading.remove();mapNode.insertAdjacentHTML('afterend','<p class="source-note">The map is unavailable. All six city guides are linked alongside it.</p>')}
 }

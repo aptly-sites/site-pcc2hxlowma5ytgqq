@@ -1,0 +1,151 @@
+/* Full snapshot of the geometric team portrait stylesheet. Not loaded by the site.
+   The shape spans remain in company/index.html if this treatment is restored. */
+.company-hero{background:var(--navy);color:var(--white)}
+.company-hero-photo{background:#dce2e8}
+.company-hero-photo img{display:block;width:100%;height:auto}
+.company-hero-copy{padding:56px 0 66px}
+.company-hero-copy .eyebrow{color:#c4d3f5}
+.company-hero-copy h1{max-width:900px;margin-bottom:20px}
+.company-hero-copy p{max-width:740px;color:#e3e9f4;font-size:18px;margin-bottom:0}
+@media(max-width:600px){.company-hero-copy{padding:42px 0 48px}.company-hero-copy h1{font-size:clamp(38px,10vw,50px)}.company-hero-copy p{font-size:16px}}
+.company-team{background:var(--white)}
+.company-team .section-head{margin-bottom:38px}
+.company-team .section-head p{max-width:510px}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:46px 26px}
+/* Team portrait settings: all colors, shapes, and crop positions are grouped here. */
+.team-profile{
+ --portrait-position:70% center;
+ --portrait-surface:#f6f8fc;
+ --shape-main-inset:12% 5% 0 8%;
+ --shape-main-color:#d8e4f4;
+ --shape-main-radius:50% 50% 6% 6%;
+ --shape-main-transform:rotate(-9deg);
+ --shape-main-clip:none;
+ --shape-accent-right:-11%;
+ --shape-accent-left:auto;
+ --shape-accent-top:-12%;
+ --shape-accent-width:50%;
+ --shape-accent-border:18px solid #c1a15f;
+ --shape-accent-radius:50%;
+ --shape-accent-color:transparent;
+ --shape-accent-clip:none;
+ min-width:0;margin:0;outline:none;
+}
+/* Dee Hawkins */
+.team-profile:nth-child(2){
+ --shape-main-inset:15% 5% -13% 10%;
+ --shape-main-color:#e9d7b3;
+ --shape-main-radius:7%;
+ --shape-main-transform:rotate(18deg);
+ --shape-accent-right:auto;
+ --shape-accent-left:-12%;
+ --shape-accent-top:2%;
+ --shape-accent-width:42%;
+ --shape-accent-border:0;
+ --shape-accent-radius:12%;
+ --shape-accent-color:#8ea9d5;
+ --shape-accent-clip:polygon(50% 0,100% 100%,0 100%);
+}
+/* Jonathan Livingstone */
+.team-profile:nth-child(3){
+ --portrait-position:center 20%;
+ --shape-main-inset:13% 6% -3% 7%;
+ --shape-main-color:#d3dce9;
+ --shape-main-radius:12% 72% 8% 12%;
+ --shape-main-transform:rotate(-6deg);
+ --shape-accent-top:0;
+ --shape-accent-right:4%;
+ --shape-accent-width:38%;
+ --shape-accent-border:15px solid #a8bde0;
+}
+/* Lindsey Scribner */
+.team-profile:nth-child(4){
+ --shape-main-inset:12% 8% 0 8%;
+ --shape-main-color:#c6d5ef;
+ --shape-main-radius:40% 6% 38% 6%;
+ --shape-main-transform:rotate(8deg);
+ --shape-accent-top:1%;
+ --shape-accent-right:-6%;
+ --shape-accent-width:44%;
+ --shape-accent-border:0;
+ --shape-accent-radius:4%;
+ --shape-accent-color:#d8bd82;
+ --shape-accent-clip:polygon(50% 0,61% 33%,100% 18%,75% 51%,100% 80%,61% 68%,50% 100%,39% 68%,0 80%,25% 51%,0 18%,39% 33%);
+}
+/* Mary Fran Mulcahy */
+.team-profile:nth-child(5){
+ --shape-main-inset:13% 7% -7% 10%;
+ --shape-main-color:#e5d9bf;
+ --shape-main-radius:50% 8% 50% 8%;
+ --shape-main-transform:rotate(-12deg);
+ --shape-accent-top:-5%;
+ --shape-accent-right:-1%;
+ --shape-accent-border:18px solid #b9ccec;
+}
+/* Ester Quiroz */
+.team-profile:nth-child(6){
+ --shape-main-inset:16% 3% -10% 11%;
+ --shape-main-color:#d4e3e7;
+ --shape-main-radius:44% 44% 5% 5%;
+ --shape-main-transform:rotate(6deg);
+ --shape-accent-top:9%;
+ --shape-accent-right:-14%;
+ --shape-accent-border:0;
+ --shape-accent-radius:50% 50% 8% 8%;
+ --shape-accent-color:#c5a56a;
+}
+/* Clara Aramburo */
+.team-profile:nth-child(7){
+ --shape-main-inset:18% 6% -6% 6%;
+ --shape-main-color:#c9d8ee;
+ --shape-main-radius:5%;
+ --shape-main-clip:polygon(50% 0,100% 100%,0 100%);
+ --shape-main-transform:rotate(-7deg);
+ --shape-accent-top:0;
+ --shape-accent-right:3%;
+ --shape-accent-border:18px solid #d9c392;
+}
+/* Alexa Sanchez */
+.team-profile:nth-child(8){
+ --portrait-position:center 22%;
+ --shape-main-inset:14% 5% -8% 9%;
+ --shape-main-color:#d9e3f2;
+ --shape-main-radius:50% 50% 0 0;
+ --shape-main-transform:rotate(11deg);
+ --shape-accent-top:-3%;
+ --shape-accent-right:-8%;
+ --shape-accent-border:0;
+ --shape-accent-radius:50%;
+ --shape-accent-color:#e2c992;
+}
+/* Matt Tahon */
+.team-profile:nth-child(9){
+ --shape-main-inset:11% 7% -5% 9%;
+ --shape-main-color:#e7d8b8;
+ --shape-main-radius:7% 52% 7% 52%;
+ --shape-main-transform:rotate(-8deg);
+ --shape-accent-top:5%;
+ --shape-accent-right:-13%;
+ --shape-accent-width:54%;
+ --shape-accent-border:18px solid #aebfdf;
+ --shape-accent-radius:15%;
+}
+.team-profile:focus-visible{outline:3px solid var(--blue);outline-offset:7px}
+.team-portrait{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:1/1;background:var(--portrait-surface)}
+.team-shape{position:absolute;display:block;pointer-events:none;transition:transform .7s cubic-bezier(.2,.75,.2,1),border-radius .7s ease,opacity .55s ease}
+.team-shape-main{z-index:-2;inset:var(--shape-main-inset);background:var(--shape-main-color);border-radius:var(--shape-main-radius);clip-path:var(--shape-main-clip);transform:var(--shape-main-transform)}
+.team-shape-accent{z-index:-1;right:var(--shape-accent-right);left:var(--shape-accent-left);top:var(--shape-accent-top);width:var(--shape-accent-width);aspect-ratio:1;border:var(--shape-accent-border);border-radius:var(--shape-accent-radius);background:var(--shape-accent-color);clip-path:var(--shape-accent-clip);opacity:.9;transform:rotate(10deg)}
+.team-portrait img{position:absolute;z-index:1;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:var(--portrait-position,center);transition:transform .7s cubic-bezier(.2,.75,.2,1);will-change:transform}
+.team-profile:is(:hover,:focus-visible) .team-shape-main{transform:translate(-5%,2%) rotate(11deg) scale(1.15);border-radius:28% 62% 14% 38%}
+.team-profile:is(:hover,:focus-visible) .team-shape-accent{transform:translate(-30%,20%) rotate(-30deg) scale(1.18)}
+.team-profile:is(:hover,:focus-visible) img{transform:translateY(-7px) scale(1.035)}
+.team-profile figcaption{padding:20px 2px 0}
+.team-profile h3{font-size:22px;line-height:1.25;margin:0;color:var(--navy);transition:color .25s ease}
+.team-profile:is(:hover,:focus-visible) h3{color:var(--blue)}
+.team-profile figcaption .team-role{font-size:15px;line-height:1.4;font-weight:600;color:#405071;margin:9px 0 0}
+.team-profile figcaption .team-license{font-size:13px;line-height:1.45;color:#617087;margin:5px 0 0}
+.company-closing .split{align-items:start}
+.company-closing .company-testimonials{background:var(--pale)}
+@media(max-width:900px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 22px}}
+@media(max-width:600px){.company-team .section-head{margin-bottom:26px}.team-grid{grid-template-columns:1fr;gap:30px}.team-portrait{aspect-ratio:1.08/1}.team-profile h3{font-size:20px}.team-profile figcaption{padding-top:13px}.team-profile figcaption .team-role{font-size:14px}.team-profile figcaption .team-license{font-size:12px}.team-shape-accent{border-width:10px}}
+@media(prefers-reduced-motion:reduce){.team-shape,.team-portrait img,.team-profile h3{transition:none}.team-profile:is(:hover,:focus-visible) img{transform:none}}

@@ -1,5 +1,6 @@
 import {esc} from './rental-data.mjs';
-import {loadGoogleMaps,pillIcon} from './google-maps.mjs?v=1';
+import {loadGoogleMaps,pillIcon} from './google-maps.mjs?v=2';
+import {themeColor} from './theme.mjs?v=1';
 const section=document.querySelector('[data-nearby-schools]');
 if(section){
  const output=section.querySelector('[data-school-results]');
@@ -24,12 +25,12 @@ if(section){
   const bounds=new maps.LatLngBounds(),points=[],info=new maps.InfoWindow();
   if(data.home&&validPoint(data.home.lat,data.home.lon)){
    const home={lat:data.home.lat,lng:data.home.lon};points.push(home);bounds.extend(home);
-   const homeMarker=new maps.Marker({map,position:home,title:'Rental home',label:{text:'⌂',color:'#fff',fontSize:'18px',fontWeight:'700'},icon:pillIcon(maps,'#345ce5',38,38),zIndex:1});
+   const homeMarker=new maps.Marker({map,position:home,title:'Rental home',label:{text:'⌂',color:themeColor('white'),fontSize:'18px',fontWeight:'700'},icon:pillIcon(maps,themeColor('blue'),38,38),zIndex:1});
    homeMarker.addListener('click',()=>{info.setContent('<strong>Rental home</strong>');info.open({map,anchor:homeMarker})});mapMarkers.push(homeMarker);
   }
   schools.forEach((s,i)=>{
    const point={lat:s.lat,lng:s.lon};points.push(point);bounds.extend(point);
-   const marker=new maps.Marker({map,position:point,title:`${i+1}. ${s.name}`,label:{text:String(i+1),color:'#fff',fontSize:'12px',fontWeight:'700'},icon:pillIcon(maps,'#142653',36,36),zIndex:100});mapMarkers.push(marker);
+   const marker=new maps.Marker({map,position:point,title:`${i+1}. ${s.name}`,label:{text:String(i+1),color:themeColor('white'),fontSize:'12px',fontWeight:'700'},icon:pillIcon(maps,themeColor('navy'),36,36),zIndex:100});mapMarkers.push(marker);
    const open=()=>{info.setContent(`<strong>${i+1}. ${esc(s.name)}</strong><br>${esc([s.type?`${s.type} school`:'',gradeRange(s.grades)?`Grades ${gradeRange(s.grades)}`:''].filter(Boolean).join(' · '))}<br><a href="${esc(s.url)}" target="_blank" rel="noopener nofollow">School profile ↗</a>`);info.open({map,anchor:marker})};marker.addListener('click',open);
    const card=output.querySelector(`[data-school-index="${i}"]`);
    card.addEventListener('mouseenter',()=>marker.setZIndex(500));
