@@ -19,7 +19,7 @@ async function createMap(id){
  const maps=await loadGoogleMaps();googleMaps=maps;
  const m=new maps.Map(node,{center:{lat:32.9,lng:-96.9},zoom:9,scrollwheel:false,mapTypeControl:false,streetViewControl:false,fullscreenControl:false});
  const isSearchMap=id==='rental-map';let loader=null,ended=false;
- if(!isSearchMap){loader=document.createElement('div');loader.className='crown-loader map-loading';loader.setAttribute('role','status');loader.innerHTML='<img src="/assets/logo.svg" alt=""><span>Loading the map…</span>';node.append(loader)}
+ if(!isSearchMap){loader=document.createElement('div');loader.className='crown-loader map-loading';loader.setAttribute('role','status');loader.innerHTML='<img src="/assets/brand/b-mark-navy.png" alt=""><span>Loading the map…</span>';node.append(loader)}
  const clear=()=>{if(ended)return;ended=true;node.dataset.tilesReady='true';if(isSearchMap){mapReady=true;finishSearchLoading()}else loader?.remove()};
  maps.event.addListenerOnce(m,'idle',clear);setTimeout(clear,12000);
  return m
@@ -84,7 +84,7 @@ function renderAffordableHomes(){
  const d=affordabilityDialog;if(!d?.open||affordabilityBudget===null)return;
  const out=d.querySelector('[data-affordable-homes]'),summary=d.querySelector('[data-affordable-summary]');
  const city=cityResults?.dataset.cityListings||'',scope=city&&!d.querySelector('[name=allMarkets]')?.checked?city:'';
- if(feedState==='loading'){summary.textContent='Checking live availability…';out.innerHTML='<div class="crown-loader" role="status"><img src="/assets/logo.svg" alt=""><span>Finding homes within your estimate…</span></div>';return}
+ if(feedState==='loading'){summary.textContent='Checking live availability…';out.innerHTML='<div class="crown-loader" role="status"><img src="/assets/brand/b-mark-navy.png" alt=""><span>Finding homes within your estimate…</span></div>';return}
  if(feedState==='failed'){summary.textContent='Live listings could not refresh.';out.innerHTML=`<div class="empty"><p>Your estimate is ready, but current matching homes are unavailable.</p><button class="button outline" type="button" data-affordable-retry>Try again</button><a class="textlink" href="${widget}">Open the live rental portal ↗</a></div>`;return}
  const matches=withinBudget(inventory,affordabilityBudget,scope);
  summary.textContent=`${matches.length} ${matches.length===1?'home':'homes'} at or below ${formatBudget(affordabilityBudget)}/month${scope?' in '+scope:' across Blue Crown markets'}.`;

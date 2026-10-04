@@ -14,7 +14,7 @@ const NOT_FOUND_MAIN =
 const GONE_MAIN =
   '<main id="main"><section class="section"><div class="wrap"><h1>This home is no longer available.</h1><a class="button" href="/properties/">Browse current homes →</a></div></section></main></body></html>';
 const LOADING_OVERLAY =
-  '<div class="crown-loader detail-loading" role="status"><img src="/assets/logo.svg" alt=""><span>Opening your next home…</span></div>';
+  '<div class="crown-loader detail-loading" role="status"><img src="/assets/brand/b-mark-navy.png" alt=""><span>Opening your next home…</span></div>';
 const HIDE_LOADER_STYLE = '<style>.detail-loading{display:none!important}</style>';
 
 // Read the shared template from the Pages asset store without recursing into middleware.
