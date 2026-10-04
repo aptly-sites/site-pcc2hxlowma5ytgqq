@@ -69,3 +69,7 @@
  .rental-search-actions .button{width:auto!important;flex:1}
  .rental-search-actions p{text-align:left}
 }
+
+.rental-gallery{position:relative}
+.gallery-all-overlay{position:absolute;right:12px;bottom:12px;z-index:2;border:0;background:white;color:var(--navy);padding:10px 16px;font-family:inherit;font-size:12px;font-weight:700;cursor:pointer}
+@media(max-width:800px){.gallery-all-overlay{display:none}}
