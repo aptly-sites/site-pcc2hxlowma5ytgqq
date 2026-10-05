@@ -11,12 +11,12 @@
 .company-team .section-head p{max-width:510px}
 .team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:46px 26px}
 /* Team portrait colors and crop positions. Geometry is archived in assets/archive/team-geometric-patterns.css. */
-.team-profile{--portrait-position:70% center;--portrait-surface:var(--pale);min-width:0;margin:0;outline:none}
-.team-profile:nth-child(even){--portrait-surface:var(--ivory)}
+.team-profile{--portrait-position:70% center;--portrait-surface:var(--pale);--portrait-pattern:url('/assets/blue-crown-pattern-harbor-fog-mist.svg');min-width:0;margin:0;outline:none}
+.team-profile:nth-child(even){--portrait-surface:var(--ivory);--portrait-pattern:url('/assets/blue-crown-pattern-vellum-crown-gold.svg')}
 .team-profile:nth-child(3){--portrait-position:center 20%}
 .team-profile:nth-child(8){--portrait-position:center top}
 .team-profile:focus-visible{outline:3px solid var(--blue);outline-offset:7px}
-.team-portrait{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:1/1;background:var(--portrait-surface)}
+.team-portrait{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:1/1;background-color:var(--portrait-surface);background-image:var(--portrait-pattern);background-repeat:repeat;background-size:160px 320px}
 .team-shape{display:none}
 .team-portrait img{position:absolute;z-index:1;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:var(--portrait-position,center);transition:transform .7s cubic-bezier(.2,.75,.2,1);will-change:transform}
 .team-profile:nth-child(8) .team-portrait img{inset:0 auto auto 10%;width:80%;height:120%;object-fit:cover;object-position:center top}
