@@ -1,4 +1,4 @@
-import {comparisonCard} from './comparison.mjs?v=1';
+import {comparisonCard} from './comparison.mjs?v=2';
 import {getRentalFeed} from './rental-feed.mjs?v=2';
 import {rentBudget,withinBudget} from './affordability-math.mjs';
 import {esc,title,path,photos,money,amount,tour,apply,coords,filterHomes,availability,widget} from './rental-data.mjs?v=2';
@@ -85,7 +85,7 @@ function renderAffordableHomes(){
  const out=d.querySelector('[data-affordable-homes]'),summary=d.querySelector('[data-affordable-summary]');
  const city=cityResults?.dataset.cityListings||'',scope=city&&!d.querySelector('[name=allMarkets]')?.checked?city:'';
  if(feedState==='loading'){summary.textContent='Checking live availability…';out.innerHTML='<div class="crown-loader" role="status"><img src="/assets/brand/b-mark-navy.png" alt=""><span>Finding homes within your estimate…</span></div>';return}
- if(feedState==='failed'){summary.textContent='Live listings could not refresh.';out.innerHTML=`<div class="empty"><p>Your estimate is ready, but current matching homes are unavailable.</p><button class="button outline" type="button" data-affordable-retry>Try again</button><a class="textlink" href="${widget}">Open the live rental portal ↗</a></div>`;return}
+ if(feedState==='failed'){summary.textContent='Live listings could not refresh.';out.innerHTML=`<div class="empty"><p>Your estimate is ready, but current matching homes are unavailable.</p><button class="button outline neutral" type="button" data-affordable-retry>Try again</button><a class="textlink" href="${widget}">Open the live rental portal ↗</a></div>`;return}
  const matches=withinBudget(inventory,affordabilityBudget,scope);
  summary.textContent=`${matches.length} ${matches.length===1?'home':'homes'} at or below ${formatBudget(affordabilityBudget)}/month${scope?' in '+scope:' across Blue Crown markets'}.`;
  out.innerHTML=matches.length?matches.map(x=>card(x,{compact:true})).join(''):`<div class="empty"><h3>No current homes match this estimate${scope?' in '+esc(scope):''}.</h3><p>${scope?'Try searching all Blue Crown markets, or revisit when availability changes.':'You can adjust your income entry or check back as availability changes.'}</p><a class="textlink" href="${widget}">Browse the live rental portal ↗</a></div>`;

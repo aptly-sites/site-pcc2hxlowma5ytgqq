@@ -5,7 +5,7 @@
 
   const stylesheet = document.createElement('link');
   stylesheet.rel = 'stylesheet';
-  stylesheet.href = '/assets/renter-leads.css?v=1';
+  stylesheet.href = '/assets/renter-leads.css?v=5';
   document.head.append(stylesheet);
 
   const breadcrumb = detail?.querySelector('.rental-breadcrumb')?.textContent

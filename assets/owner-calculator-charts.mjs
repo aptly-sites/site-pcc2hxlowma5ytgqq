@@ -48,5 +48,6 @@ export function rentSellChart(result, money) {
   }).join('');
   const years = ticks.map(index => `<text x="${x(index).toFixed(1)}" y="250" text-anchor="middle">Year ${rows[index].year}</text>`).join('');
   const last = rows.length - 1;
+  // BRAND-COLOR: legacy-blue-token; generated chart line and final dot use --blue.
   return `<figure class="owner-chart owner-line-chart"><figcaption>Projected outcome by year</figcaption><div class="owner-chart-legend"><span class="rent-path">Rent, then sell</span><span class="sell-path">Sell now</span></div><svg viewBox="0 0 540 265" aria-hidden="true" focusable="false">${grids}<polyline points="${points('rentOutcome')}" fill="none" style="stroke:var(--blue)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="${points('sellOutcome')}" fill="none" style="stroke:var(--navy)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="${x(last).toFixed(1)}" cy="${y(rows[last].rentOutcome).toFixed(1)}" r="5" style="fill:var(--blue)"/><circle cx="${x(last).toFixed(1)}" cy="${y(rows[last].sellOutcome).toFixed(1)}" r="5" style="fill:var(--navy)"/>${years}</svg><p class="owner-chart-note">At year ${rows[last].year}: rent then sell ${money(rows[last].rentOutcome)}; sell now ${money(rows[last].sellOutcome)}. The table below shows each year.</p></figure>`;
 }
