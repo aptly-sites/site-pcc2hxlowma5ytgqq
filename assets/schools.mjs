@@ -25,6 +25,7 @@ if(section){
   const bounds=new maps.LatLngBounds(),points=[],info=new maps.InfoWindow();
   if(data.home&&validPoint(data.home.lat,data.home.lon)){
    const home={lat:data.home.lat,lng:data.home.lon};points.push(home);bounds.extend(home);
+   // BRAND-COLOR: legacy-blue-token; rental-home map marker uses the blue theme token.
    const homeMarker=new maps.Marker({map,position:home,title:'Rental home',label:{text:'⌂',color:themeColor('white'),fontSize:'18px',fontWeight:'700'},icon:pillIcon(maps,themeColor('blue'),38,38),zIndex:1});
    homeMarker.addListener('click',()=>{info.setContent('<strong>Rental home</strong>');info.open({map,anchor:homeMarker})});mapMarkers.push(homeMarker);
   }

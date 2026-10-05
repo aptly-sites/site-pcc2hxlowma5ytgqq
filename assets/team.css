@@ -1,10 +1,10 @@
 .company-hero{background:var(--navy);color:var(--white)}
-.company-hero-photo{background:#dce2e8}
+.company-hero-photo{/* BRAND-COLOR: literal values #dce2e8 */background:#dce2e8}
 .company-hero-photo img{display:block;width:100%;height:auto}
 .company-hero-copy{padding:56px 0 66px}
-.company-hero-copy .eyebrow{color:#c4d3f5}
+.company-hero-copy .eyebrow{/* BRAND-COLOR: literal values #c4d3f5 */color:#c4d3f5}
 .company-hero-copy h1{max-width:900px;margin-bottom:20px}
-.company-hero-copy p{max-width:740px;color:#e3e9f4;font-size:18px;margin-bottom:0}
+.company-hero-copy p{/* BRAND-COLOR: literal values #e3e9f4 */max-width:740px;color:#e3e9f4;font-size:18px;margin-bottom:0}
 @media(max-width:600px){.company-hero-copy{padding:42px 0 48px}.company-hero-copy h1{font-size:clamp(38px,10vw,50px)}.company-hero-copy p{font-size:16px}}
 .company-team{background:var(--white)}
 .company-team .section-head{margin-bottom:38px}
@@ -15,7 +15,7 @@
 .team-profile:nth-child(even){--portrait-surface:var(--ivory)}
 .team-profile:nth-child(3){--portrait-position:center 20%}
 .team-profile:nth-child(8){--portrait-position:center top}
-.team-profile:focus-visible{outline:3px solid var(--blue);outline-offset:7px}
+.team-profile:focus-visible{outline:3px solid var(--harbor-blue);outline-offset:7px}
 .team-portrait{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:1/1;background:var(--portrait-surface)}
 .team-shape{display:none}
 .team-portrait img{position:absolute;z-index:1;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:var(--portrait-position,center);transition:transform .7s cubic-bezier(.2,.75,.2,1);will-change:transform}
@@ -23,9 +23,9 @@
 .team-profile:is(:hover,:focus-visible) img{transform:translateY(-7px) scale(1.035)}
 .team-profile figcaption{padding:20px 2px 0}
 .team-profile h3{font-size:22px;line-height:1.25;margin:0;color:var(--navy);transition:color .25s ease}
-.team-profile:is(:hover,:focus-visible) h3{color:var(--blue)}
-.team-profile figcaption .team-role{font-size:15px;line-height:1.4;font-weight:600;color:#405071;margin:9px 0 0}
-.team-profile figcaption .team-license{font-size:13px;line-height:1.45;color:#617087;margin:5px 0 0}
+.team-profile:is(:hover,:focus-visible) h3{color:var(--harbor-blue)}
+.team-profile figcaption .team-role{/* BRAND-COLOR: literal values #405071 */font-size:15px;line-height:1.4;font-weight:600;color:#405071;margin:9px 0 0}
+.team-profile figcaption .team-license{/* BRAND-COLOR: literal values #617087 */font-size:13px;line-height:1.45;color:#617087;margin:5px 0 0}
 .company-closing .split{align-items:start}
 .company-closing .company-testimonials{background:var(--pale)}
 @media(max-width:900px){.team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 22px}}
