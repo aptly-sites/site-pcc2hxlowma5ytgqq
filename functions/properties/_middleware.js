@@ -10,9 +10,9 @@ const PROPERTY_PATH = /^\/properties\/[^/]+\/[^/]+\/?$/;
 const RACE_MS = 350;
 
 const NOT_FOUND_MAIN =
-  '<main id="main"><section class="section"><div class="wrap"><h1>Let’s check this home.</h1><p>Live listing details are temporarily unavailable.</p><a class="button" href="https://portal.getaptly.com/search/PCc2hXLoWma5yTgQQ/">Open rental portal ↗</a></div></section></main>';
+  '<main id="main"><section class="section"><div class="wrap"><h1>Let’s check this home.</h1><p>Live listing details are temporarily unavailable.</p><a class="button" href="https://portal.getaptly.com/search/PCc2hXLoWma5yTgQQ/" target="_blank" rel="noopener noreferrer">Open rental portal<span class="new-tab-cue" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></div></section></main>';
 const GONE_MAIN =
-  '<main id="main"><section class="section"><div class="wrap"><h1>This home is no longer available.</h1><a class="button" href="/properties/">Browse current homes →</a></div></section></main></body></html>';
+  '<main id="main"><section class="section"><div class="wrap"><h1>This home is no longer available.</h1><a class="button" href="/properties/">Browse current homes</a></div></section></main></body></html>';
 const LOADING_OVERLAY =
   '<div class="crown-loader detail-loading" role="status"><img src="/assets/brand/b-mark-navy.png" alt=""><span>Opening your next home…</span></div>';
 const HIDE_LOADER_STYLE = '<style>.detail-loading{display:none!important}</style>';

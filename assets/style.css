@@ -63,3 +63,6 @@
 .style-brand img{width:320px;height:auto;max-width:100%}
 
 @media(hover:hover){.button:not(.outline):not(.ghost):not(:disabled):hover{background:var(--gold);color:var(--navy);filter:brightness(.95)}}
+
+/* A single cue for links that open a new tab. */
+.new-tab-cue{display:inline-block;flex:none;margin-left:.3em;font-size:.9em;line-height:1;white-space:nowrap}
