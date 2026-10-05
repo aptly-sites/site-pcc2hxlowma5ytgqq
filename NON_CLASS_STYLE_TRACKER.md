@@ -37,7 +37,7 @@ For a later color update, search for `BRAND-COLOR: muted-text` and `BRAND-COLOR:
 
 Active first-party CSS rules with literal hex, RGB/HSL, white, or black values carry `BRAND-COLOR: literal values` comments listing those values. The three tracked SVG files carry `BRAND-COLOR: fixed SVG paint` comments beside elements with fixed fills or strokes. The style-tile swatch fallback labels are marked as mirrors of their `data-style-token` values. Generated chart and map uses of the legacy blue token have `BRAND-COLOR: legacy-blue-token` comments. These tags record where colors are used; they do not approve or change the remaining values.
 
-This code-color audit excludes third-party vendor files, archived CSS, the separate `color-review/` workspace, raster images, and the unused untracked `assets/blue-crown-pattern.svg` draft. Token-backed CSS uses such as `var(--white)` or `var(--navy)` are governed by their tagged declarations in `assets/style.css`.
+This code-color audit excludes third-party vendor files, archived CSS, and raster images. Token-backed CSS uses such as `var(--white)` or `var(--navy)` are governed by their tagged declarations in `assets/style.css`.
 
 The archived `assets/archive/team-geometric-patterns.css` still refers to `--blue` through CSS classes. It is excluded from the active classless list, but it must be considered before NC-09 removes the token.
 
