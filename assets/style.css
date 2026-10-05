@@ -59,3 +59,6 @@
 /* Official Blue Crown logo placements. */
 .footer .footer-brand img{width:230px;height:auto;max-width:100%;filter:none}
 .style-brand img{width:320px;height:auto;max-width:100%}
+
+/* A single cue for links that open a new tab. */
+.new-tab-cue{display:inline-block;flex:none;margin-left:.3em;font-size:.9em;line-height:1;white-space:nowrap}

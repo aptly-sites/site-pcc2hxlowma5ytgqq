@@ -17,7 +17,7 @@ if(section){
   status.textContent=`${schools.length} nearby ${schools.length===1?'school':'schools'} within 5 miles. Select a numbered pin or school below to explore.`;
   output.innerHTML=`<div class="schools-layout"><div class="school-map" data-school-map role="region" aria-label="Map of nearby schools and this rental home"></div><ol class="school-list" aria-label="Nearby schools">${schools.map((s,i)=>{
    const details=[s.type?`${s.type.charAt(0).toUpperCase()}${s.type.slice(1)} school`:'',gradeRange(s.grades)?`Grades ${gradeRange(s.grades)}`:'',s.distance!==null?`${s.distance.toFixed(1)} miles away`:''].filter(Boolean);
-   return `<li class="school-card" data-school-index="${i}"><span class="school-number" aria-hidden="true">${i+1}</span><div><h3><a href="${esc(s.url)}" target="_blank" rel="noopener nofollow">${esc(s.name)} <span aria-hidden="true">↗</span></a></h3><p>${details.map(esc).join(' · ')}</p>${location(s)?`<address>${esc(location(s))}</address>`:''}</div></li>`
+   return `<li class="school-card" data-school-index="${i}"><span class="school-number" aria-hidden="true">${i+1}</span><div><h3><a href="${esc(s.url)}" target="_blank" rel="noopener nofollow noreferrer">${esc(s.name)}<span class="new-tab-cue" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></h3><p>${details.map(esc).join(' · ')}</p>${location(s)?`<address>${esc(location(s))}</address>`:''}</div></li>`
   }).join('')}</ol></div>`;
   const mapNode=output.querySelector('[data-school-map]');let maps;
   try{maps=await loadGoogleMaps()}catch{mapNode.innerHTML='<p class="school-map-fallback">The school map is unavailable. Browse the school list alongside it.</p>';return}
@@ -31,7 +31,7 @@ if(section){
   schools.forEach((s,i)=>{
    const point={lat:s.lat,lng:s.lon};points.push(point);bounds.extend(point);
    const marker=new maps.Marker({map,position:point,title:`${i+1}. ${s.name}`,label:{text:String(i+1),color:themeColor('white'),fontSize:'12px',fontWeight:'700'},icon:pillIcon(maps,themeColor('navy'),36,36),zIndex:100});mapMarkers.push(marker);
-   const open=()=>{info.setContent(`<strong>${i+1}. ${esc(s.name)}</strong><br>${esc([s.type?`${s.type} school`:'',gradeRange(s.grades)?`Grades ${gradeRange(s.grades)}`:''].filter(Boolean).join(' · '))}<br><a href="${esc(s.url)}" target="_blank" rel="noopener nofollow">School profile ↗</a>`);info.open({map,anchor:marker})};marker.addListener('click',open);
+   const open=()=>{info.setContent(`<strong>${i+1}. ${esc(s.name)}</strong><br>${esc([s.type?`${s.type} school`:'',gradeRange(s.grades)?`Grades ${gradeRange(s.grades)}`:''].filter(Boolean).join(' · '))}<br><a href="${esc(s.url)}" target="_blank" rel="noopener nofollow noreferrer">School profile<span class="new-tab-cue" aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a>`);info.open({map,anchor:marker})};marker.addListener('click',open);
    const card=output.querySelector(`[data-school-index="${i}"]`);
    card.addEventListener('mouseenter',()=>marker.setZIndex(500));
    card.addEventListener('mouseleave',()=>marker.setZIndex(100));

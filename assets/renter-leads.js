@@ -9,7 +9,7 @@
   document.head.append(stylesheet);
 
   const breadcrumb = detail?.querySelector('.rental-breadcrumb')?.textContent
-    .split('›').map(part => part.trim()).filter(Boolean) || [];
+    .split('·').map(part => part.trim()).filter(Boolean) || [];
   const address = detail?.querySelector('.property-address')?.textContent.replace(/\s+/g, ' ').trim() || '';
   const propertyTitle = address || breadcrumb[breadcrumb.length - 1] || detail?.querySelector('h1')?.textContent.trim() || '';
   const propertyLocation = address ? '' : breadcrumb.length > 2 ? breadcrumb[breadcrumb.length - 2] : '';
@@ -17,7 +17,7 @@
   const trigger = document.createElement('button');
   trigger.type = 'button';
   trigger.className = 'button outline renter-lead-trigger';
-  trigger.textContent = detail ? 'Ask a question about this home ↗' : 'Tell us what you’re looking for ↗';
+  trigger.textContent = detail ? 'Ask a question about this home' : 'Tell us what you’re looking for';
   trigger.setAttribute('aria-haspopup', 'dialog');
 
   if (detail) {
@@ -50,7 +50,7 @@
       </div>
       <input type="hidden" name="listingId" value="${escapeHtml(listingId)}">
       <p class="renter-lead-notice">By sending this request, you ask Blue Crown to contact you about rentals. <a href="/privacy/">Privacy information</a>.</p>
-      <button class="button renter-lead-submit" type="submit">Send rental inquiry <span aria-hidden="true">↗</span></button>
+      <button class="button renter-lead-submit" type="submit">Send rental inquiry</button>
       <p class="renter-lead-status" role="status" aria-live="polite"></p>
     </form>`;
   document.body.append(dialog);
