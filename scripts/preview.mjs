@@ -9,7 +9,7 @@ import { onRequest as propertyDetails } from '../functions/properties/_middlewar
 const root = resolve(fileURLToPath(new URL('..', import.meta.url)));
 const host = '127.0.0.1';
 const port = Number(process.env.PORT || 4173);
-const production = 'https://blue-crown-property-management.sshekou.chatgpt.site';
+const production = 'https://www.bluecrownproperties.com';
 const types = {
   '.css': 'text/css; charset=utf-8',
   '.html': 'text/html; charset=utf-8',
@@ -79,7 +79,13 @@ async function sendResponse(response, request, output) {
 async function sendStatic(request, output, pathname) {
   const path = await fileAt(pathname);
   if (!path) {
-    output.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
+    const notFound = await fileAt('/404.html');
+    output.writeHead(404, {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store'
+    });
+    if (request.method === 'HEAD') return output.end();
+    if (notFound) return createReadStream(notFound).pipe(output);
     return output.end('Not found');
   }
   output.writeHead(200, {
