@@ -15,7 +15,10 @@ export async function fetchRentalPages(fetcher=fetch,timeoutMs=15000){
  for(let page=1;data.length<first.total;page++){
   const next=await fetchRentalPage(page,fetcher,timeoutMs),before=data.length;
   add(next.data);
-  if(data.length===before)throw Error('Incomplete rental feed');
+  if(data.length===before){
+   console.warn('Aptly rental feed stopped adding listings.',{reportedTotal:first.total,distinctListings:data.length,page});
+   break;
+  }
  }
  return {...first,data};
 }
